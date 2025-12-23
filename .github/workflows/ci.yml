@@ -83,4 +83,4 @@ jobs:
 
       - name: Push Docker Image to Docker Hub
         run: |
-            docker push aidlmrza/diabetes-mlflow:tagname
+            docker push aidlmrza/diabetes-mlflow:latest
