@@ -79,10 +79,10 @@ jobs:
           echo "Building image from RUN_ID=${{ env.RUN_ID }}"
           mlflow models build-docker \
             --model-uri "runs:/${{ env.RUN_ID }}/model" \
-            --name "${{ secrets.DOCKER_USERNAME }}/diabetes-mlflow:${{ github.sha }}"
+            --name "${{ secrets.DOCKER_USERNAME }}/diabetes-mlflow:latest"
 
 
       - name: Push Docker Image to Docker Hub
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/diabetes-mlflow:${{ github.sha }}
+          docker push ${{ secrets.DOCKER_USERNAME }}/diabetes-mlflow:latest
 
