@@ -37,6 +37,11 @@ jobs:
           name: trained-model
           path: MLProject/rf_model.joblib
 
+      - name: Get latest MLflow run ID
+        run: |
+          RUN_ID=$(mlflow runs list --max-results 1 --output json | jq -r '.[0].run_id')
+          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
+
       - name: Set up Docker
         uses: docker/setup-buildx-action@v3
 
@@ -49,8 +54,8 @@ jobs:
       - name: Build Docker Image with MLflow
         run: |
           mlflow models build-docker \
-            -m runs:/latest/model \
-            -n ${{ secrets.DOCKER_USERNAME }}/rf-diabetes-mlflow
+            -m runs:/${{ env.RUN_ID }}/model \
+            -n yourdockerhubusername/diabetes-rf:latest
 
       - name: Push Docker Image
         run: |
