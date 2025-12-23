@@ -5,7 +5,7 @@ entry_points:
     parameters:
       data_path:
         type: str
-        default: dataset_preprocessing.csv 
+        default: diabetes_preprocessing.csv 
       target_col:
         type: str
         default: Outcome 
@@ -14,4 +14,5 @@ entry_points:
       python modelling.py
       --data_path {data_path}
       --target_col {target_col}
+
 
