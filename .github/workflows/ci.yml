@@ -48,11 +48,11 @@ jobs:
         run: |
           mlflow models build-docker \
             -m models:/DiabetesRandomForest/1 \
-            -n ${{ secrets.DOCKER_USERNAME }}/diabetes-rf:latest
+            -n ${{ secrets.DOCKER_USERNAME }}/workflow-ci:latest
       
       - name: Push Docker Image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/diabetes-rf:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/workflow-ci:latest
 
       - name: List Docker Images
         run: |
