@@ -26,8 +26,12 @@ y_pred = model.predict(X_test)
 
 acc = accuracy_score(y_test, y_pred)
 
-# Save artifact (optional)
-dump(model, "rf_model.joblib")
+# Log model to MLflow (ADVANCED)
+mlflow.sklearn.log_model(
+    sk_model=model,
+    artifact_path="model"
+)
 
 print("Training completed successfully")
 print("Accuracy:", acc)
+
