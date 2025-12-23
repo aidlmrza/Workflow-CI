@@ -25,20 +25,22 @@ X_train, X_test, y_train, y_test = train_test_split(
 mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("CI_RandomForest_Diabetes")
 
-with mlflow.start_run():
-    model = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42
-    )
+# =========================
+# Train model (NO start_run)
+# =========================
+model = RandomForestClassifier(
+    n_estimators=100,
+    random_state=42
+)
 
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
 
-    acc = accuracy_score(y_test, y_pred)
+acc = accuracy_score(y_test, y_pred)
 
-    mlflow.log_metric("accuracy", acc)
+mlflow.log_metric("accuracy", acc)
 
-    dump(model, "rf_model.joblib")
-    mlflow.log_artifact("rf_model.joblib")
+dump(model, "rf_model.joblib")
+mlflow.log_artifact("rf_model.joblib")
 
-    print("Training completed. Accuracy:", acc)
+print("Training completed. Accuracy:", acc)
