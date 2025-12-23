@@ -1,9 +1,11 @@
 import pandas as pd
-import mlflow                      
-import mlflow.sklearnfrom 
+import mlflow
+import mlflow.sklearn
+
+from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
-from joblib import dump
+
 
 # Load dataset
 data = pd.read_csv("diabetes_preprocessing.csv")
@@ -34,5 +36,6 @@ mlflow.sklearn.log_model(
 
 print("Training completed successfully")
 print("Accuracy:", acc)
+
 
 
