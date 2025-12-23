@@ -81,10 +81,6 @@ jobs:
             --model-uri "runs:/${{ env.RUN_ID }}/model" \
             --name "${{ secrets.DOCKER_USERNAME }}/diabetes-mlflow:latest"
 
-      - name: Tag Docker Image
-        run: |
-          docker tag diabetes-mlflow ${{ secrets.DOCKER_USERNAME}}/diabetes-mlflow:latest
-
       - name: Push Docker Image to Docker Hub
         run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/diabetes-mlflow:latest
