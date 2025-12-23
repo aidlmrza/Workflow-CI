@@ -31,11 +31,14 @@ acc = accuracy_score(y_test, y_pred)
 # Log model to MLflow (ADVANCED)
 mlflow.sklearn.log_model(
     sk_model=model,
-    artifact_path="model"
+    artifact_path="model",
+    registered_model_name="DiabetesRandomForest"
 )
+
 
 print("Training completed successfully")
 print("Accuracy:", acc)
+
 
 
 
