@@ -30,5 +30,11 @@ jobs:
       - name: Run MLflow Project
         run: |
           mlflow run MLProject --env-manager=local
+          
+      - name: Upload trained model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: MLProject/rf_model.joblib
 
 
