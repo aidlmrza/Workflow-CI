@@ -5,12 +5,13 @@ entry_points:
     parameters:
       data_path:
         type: str
-        default: dataset_diabetes.csv  # Ganti dengan dataset yang Anda gunakan
+        default: dataset_preprocessing.csv 
       target_col:
         type: str
-        default: target  # Ganti dengan kolom target yang sesuai
+        default: Outcome 
 
     command: >
       python modelling.py
       --data_path {data_path}
       --target_col {target_col}
+
